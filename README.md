@@ -39,6 +39,12 @@ Beautify a specific directory or file
 
 ## TODO
 
+Decide which tool/AST-transformator to use:
+
+- uglifyjs/node-burrito
+- zeon/ZeParser (@kuvos willing to make an npm package)
+- REGULAR EXPRESSIONS, LOL
+
 Coding style elements which should be configurable & supported at some point:
 
 - Indentation
