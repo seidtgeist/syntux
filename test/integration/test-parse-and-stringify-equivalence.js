@@ -14,7 +14,7 @@ fixtures.forEach(function(fileName) {
   var path              = common.dir.fixture + '/' + fileName;
   var source            = fs.readFileSync(path, 'utf8');
 
-  var reassembledSource = Syntux.stringify(Syntux.parse(source));
+  var reassembledSource = Syntux.transform(source);
 
   if (reassembledSource === source) {
     console.log('Pass: %s', fileName);
