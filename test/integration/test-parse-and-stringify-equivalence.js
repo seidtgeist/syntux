@@ -22,7 +22,7 @@ fixtures.forEach(function(fileName) {
   }
 
   var reassembledPath = common.dir.tmp + '/' + fileName;
-  fs.writeFileSync(reassembledPath, 'utf8');
+  fs.writeFileSync(reassembledPath, reassembledSource, 'utf8');
 
   var diffCmd = difftool + ' ' + path + ' ' + reassembledPath;
   exec(diffCmd, {maxBuffer: 1024 * 1024}, function(err, diff, stderr) {
