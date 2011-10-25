@@ -11,3 +11,8 @@ var assert = require('assert');
   var source = Syntux.transform('foo("b\\"ar")', {quotes: '\''});
   assert.equal(source, 'foo(\'b"ar\')');
 })();
+
+(function testUnescapedQuote() {
+  var source = Syntux.transform('foo("b\'ar")', {quotes: '\''});
+  assert.equal(source, 'foo(\'b\\\'ar\')');
+})();
