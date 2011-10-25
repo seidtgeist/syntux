@@ -6,6 +6,8 @@ var difftool = process.env.DIFFTOOL || 'diff';
 var exec     = require('child_process').exec;
 var exitCode = 0;
 
+if (process.env.FIXTURE) fixtures = [process.env.FIXTURE];
+
 fixtures.forEach(function(fileName) {
   if (!/\.js$/.test(fileName)) return;
 
