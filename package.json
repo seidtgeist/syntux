@@ -8,6 +8,7 @@
     "type": "git",
     "url": "git://github.com/evilhackerdude/syntux.git"
   },
+  "bin": {"syntux": "./bin/syntux.js"},
   "main": "./index",
   "engines": {
     "node": "*"
