@@ -6,3 +6,8 @@ var assert = require('assert');
   var source = Syntux.transform('foo("bar")', {quotes: '\''});
   assert.equal(source, 'foo(\'bar\')');
 })();
+
+(function testEscapedQuote() {
+  var source = Syntux.transform('foo("b\\"ar")', {quotes: '\''});
+  assert.equal(source, 'foo(\'b"ar\')');
+})();
