@@ -12,6 +12,8 @@
   "engines": {
     "node": "*"
   },
-  "dependencies": {},
+  "dependencies": {
+    "zeparser": "0.0.1"
+  },
   "devDependencies": {}
 }
