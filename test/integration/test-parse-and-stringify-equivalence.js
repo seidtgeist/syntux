@@ -1,0 +1,39 @@
+var common   = require('../common');
+var fs       = require('fs');
+var fixtures = fs.readdirSync(common.dir.fixture);
+var Syntux   = common.Syntux;
+var difftool = process.env.DIFFTOOL || 'diff';
+var exec     = require('child_process').exec;
+var exitCode = 0;
+
+fixtures.forEach(function(fileName) {
+  if (!/\.js$/.test(fileName)) return;
+
+  var path              = common.dir.fixture + '/' + fileName;
+  var source            = fs.readFileSync(path, 'utf8');
+
+  var reassembledSource = Syntux.stringify(Syntux.parse(source));
+
+  if (reassembledSource === source) {
+    console.log('Pass: %s', fileName);
+    return;
+  }
+
+  var reassembledPath = common.dir.tmp + '/' + fileName;
+  fs.writeFileSync(reassembledPath, 'utf8');
+
+  var diffCmd = difftool + ' ' + path + ' ' + reassembledPath;
+  exec(diffCmd, {maxBuffer: 1024 * 1024}, function(err, diff, stderr) {
+    // `diff` will exit with code 1 if there is a diff ... so lets do this:
+    if (err && stderr) throw err;
+
+    console.log('Fail: %s\n', fileName);
+    console.log(diff);
+
+    exitCode = 1;
+  });
+});
+
+process.on('exit', function() {
+  process.reallyExit(exitCode);
+});
