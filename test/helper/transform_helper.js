@@ -6,7 +6,8 @@ module.exports = TransformHelper;
 function TransformHelper() {
   this._tests = [];
   this._pass  = 0;
-  this._fails = 0;
+  this._fail = 0;
+  this._total = 0;
   this._start = null;
   this._end   = null;
 }
@@ -22,13 +23,22 @@ TransformHelper.prototype.start = function() {
   process.nextTick(this.nextTest.bind(this));
 };
 
-TransformHelper.prototype.test = function(test) {
+TransformHelper.prototype.test = function(skip, test) {
+  if (arguments.length === 1) {
+    test      = skip;
+    test.skip = false;
+  } else {
+    test.skip = skip;
+  }
+
+  this._total++;
   this._tests.push(test);
 };
 
 TransformHelper.prototype.nextTest = function() {
   var test = this._tests.shift();
   if (!test) return this.end();
+  if (test.skip) return this.nextTest();
 
   var output = Syntux.transform(test.input, test.options);
   if (output === test.expected) {
@@ -38,7 +48,7 @@ TransformHelper.prototype.nextTest = function() {
     return;
   }
 
-  this._fails++;
+  this._fail++;
 
   var self = this;
   DiffHelper.diff(test.expected, output, function(err, diff) {
@@ -55,12 +65,15 @@ TransformHelper.prototype.end = function() {
   this._end = Date.now();
 
   console.log(
-    '%d fails, %d pass, %d total - %d ms',
-    this._fails,
+    '%d fail, %d pass, %d total - %d ms',
+    this._fail,
     this._pass,
-    this._tests.length,
+    this._total,
     this.duration()
   );
+
+  var skipped = (this._total - (this._fail + this._pass));
+  if (skipped) console.log('\n%d skip!', skipped);
 
   process.reallyExit(this.exitCode());
 };
@@ -70,7 +83,7 @@ TransformHelper.prototype.duration = function() {
 };
 
 TransformHelper.prototype.exitCode = function() {
-  return (this._fails)
+  return (this._fail)
     ? 1
     : 0;
 };
