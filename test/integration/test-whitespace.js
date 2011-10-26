@@ -3,8 +3,8 @@ var Syntux = common.Syntux;
 var assert = require('assert');
 
 (function testRemoveTrailingWhitespace() {
-  var source = Syntux.transform('    foo    \n', {whitespace: true});
-  assert.equal(source, '    foo\n');
+  var source = Syntux.transform('    foo    ', {whitespace: true});
+  assert.equal(source, '    foo');
 })();
 
 (function testRemoveTrailingWhitespaceCommentSingle() {
@@ -17,12 +17,12 @@ var assert = require('assert');
               '    foo    \n' +
               '    bar    \n' +
               '  */       \n' +
-              '    \n';
+              '    ';
   var clean = '  /*\n' +
               '    foo\n' +
               '    bar\n' +
               '  */\n' +
-              '\n';
+              '';
   var source = Syntux.transform(dirty, {whitespace: true});
   assert.equal(source, clean);
 })();
