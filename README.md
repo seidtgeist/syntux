@@ -3,11 +3,7 @@
 Code with style!
 
 syntux automatically beautifies your entire JS code based on a configuration
-file in the project root. Here's a description of what it does:
-
-1. Find all files ending with .js
-2. For each file: read, beautify, write
-3. Done!
+file in the project root.
 
 ## Install
 
@@ -17,25 +13,11 @@ You probably want to install syntux as a globally available npm package:
 
 ## syntax.json
 
-Currently the following options are configurable:
-
-~~~ json
-{
-  "automaticallyTranslateIntoJapaneseAndBack": "@jedschmidt"
-}
-~~~
-
+TBD
+ 
 ## Usage
 
-    syntux <path>
-
-Beautify the entire code base
-
-    syntux .
-
-Beautify a specific directory or file
-
-    syntux test/
+TBD
 
 ## DONE
 
