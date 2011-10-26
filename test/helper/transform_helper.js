@@ -4,12 +4,13 @@ var DiffHelper      = common.helper('diff_helper');
 
 module.exports = TransformHelper;
 function TransformHelper() {
-  this._tests = [];
-  this._pass  = 0;
-  this._fail = 0;
-  this._total = 0;
-  this._start = null;
-  this._end   = null;
+  this._tests        = [];
+  this._pass         = 0;
+  this._fail         = 0;
+  this._total        = 0;
+  this._selectedMode = false;
+  this._start        = null;
+  this._end          = null;
 }
 
 TransformHelper.create = function() {
@@ -23,12 +24,12 @@ TransformHelper.prototype.start = function() {
   process.nextTick(this.nextTest.bind(this));
 };
 
-TransformHelper.prototype.test = function(skip, test) {
+TransformHelper.prototype.test = function(selected, test) {
   if (arguments.length === 1) {
-    test      = skip;
-    test.skip = false;
+    test = selected;
   } else {
-    test.skip = skip;
+    test.selected = selected;
+    this._selectedMode = true;
   }
 
   this._total++;
@@ -38,7 +39,7 @@ TransformHelper.prototype.test = function(skip, test) {
 TransformHelper.prototype.nextTest = function() {
   var test = this._tests.shift();
   if (!test) return this.end();
-  if (test.skip) return this.nextTest();
+  if (this._selectedMode && !test.selected) return this.nextTest();
 
   var output = Syntux.transform(test.input, test.options);
   if (output === test.expected) {
