@@ -37,21 +37,18 @@ Beautify a specific directory or file
 
     syntux test/
 
+## DONE
+
+- Quotes
+- Trailing whitespace
+
 ## TODO
-
-Decide which tool/AST-transformator to use:
-
-- uglifyjs/node-burrito
-- zeon/ZeParser (@kuvos willing to make an npm package)
-- REGULAR EXPRESSIONS, LOL
 
 Coding style elements which should be configurable & supported at some point:
 
 - Indentation
-- Quotes
 - Semicolons
 - Braces
-- Trailing whitespace
 - Newline at EOF
 - Var statements
 - Line length
@@ -67,3 +64,4 @@ Not sure what to do about these:
 Features:
 
 - Convenient git integration via `syntux --install-git-hook`
+- Intead of recursively looking for all .js files, check `git status` output
