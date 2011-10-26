@@ -19,6 +19,7 @@
     "zeparser": "0.0.1"
   },
   "devDependencies": {
-    "googlediff": "0.0.90"
+    "googlediff": "0.0.90",
+    "far": "0.0.7"
   }
 }
