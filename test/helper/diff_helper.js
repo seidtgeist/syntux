@@ -16,7 +16,7 @@ exports.diff = function(text1, text2, cb) {
 
   // Make things pretty ...
   diff = diff
-    .replace(/%0A/g, '')
+    .replace(/%0A/g, '\n')
     .split('\n')
     .reduce(function(output, line) {
       // Remove context info lines as they are partial and pretty useless

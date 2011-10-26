@@ -39,11 +39,15 @@ TransformHelper.prototype.nextTest = function() {
   }
 
   this._fails++;
+
+  var self = this;
   DiffHelper.diff(test.expected, output, function(err, diff) {
     if (err) throw err;
 
     console.log('! Failed test: ' + test.description + '\n');
     console.log(diff);
+
+    self.nextTest();
   });
 };
 
