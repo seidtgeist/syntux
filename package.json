@@ -16,5 +16,7 @@
   "dependencies": {
     "zeparser": "0.0.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "googlediff": "0.0.90"
+  }
 }
