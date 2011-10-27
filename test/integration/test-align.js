@@ -16,6 +16,32 @@ helper.test({
 
 helper.test({
   description:
+    'Do not break already aligned var statements',
+  options:
+    {align: ['=']},
+  input:
+    'var a          = 1;\n' +
+    'var muchlonger = 2;\n',
+  expected:
+    'var a          = 1;\n' +
+    'var muchlonger = 2;\n'
+});
+
+helper.test({
+  description:
+    'Align wrongly aligned var statements',
+  options:
+    {align: ['=']},
+  input:
+    'var a                 = 1;\n' +
+    'var muchlonger        = 2;\n',
+  expected:
+    'var a          = 1;\n' +
+    'var muchlonger = 2;\n'
+});
+
+helper.test({
+  description:
     'Simple alignment of of object literal',
   options:
     {align: [':']},
