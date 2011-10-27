@@ -1,28 +1,43 @@
-var common = require('../common');
-var Syntux = common.Syntux;
-var assert = require('assert');
+var TransformHelper = require('../common').helper('transform_helper');
+var helper = TransformHelper.create();
 
-(function testRemoveTrailingWhitespace() {
-  var source = Syntux.transform('    foo    ', {whitespace: true});
-  assert.equal(source, '    foo');
-})();
+helper.test({
+  description:
+    'Remove trailing whitespace',
+  options:
+    {whitespace: true},
+  input:
+    '    foo    ',
+  expected:
+    '    foo'
+});
 
-(function testRemoveTrailingWhitespaceCommentSingle() {
-  var source = Syntux.transform('    // foo    \n', {whitespace: true});
-  assert.equal(source, '    // foo\n');
-})();
+helper.test({
+  description:
+    'Remove trailing whitespace in a comment',
+  options:
+    {whitespace: true},
+  input:
+    '    // foo    \n',
+  expected:
+    '    // foo\n'
+});
 
-(function testRemoveTrailingWhitespaceCommentMulti() {
-  var dirty = '  /*       \n' +
-              '    foo    \n' +
-              '    bar    \n' +
-              '  */       \n' +
-              '    ';
-  var clean = '  /*\n' +
-              '    foo\n' +
-              '    bar\n' +
-              '  */\n' +
-              '';
-  var source = Syntux.transform(dirty, {whitespace: true});
-  assert.equal(source, clean);
-})();
+helper.test({
+  description:
+    'Remove trailing whitespace in a multiline comment',
+  options:
+    {whitespace: true},
+  input:
+    '  /*       \n' +
+    '    foo    \n' +
+    '    bar    \n' +
+    '  */       \n' +
+    '    ',
+  expected:
+    '  /*\n' +
+    '    foo\n' +
+    '    bar\n' +
+    '  */\n'
+});
+
