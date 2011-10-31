@@ -1,4 +1,4 @@
 {
   "quotes": "'",
-  "whitespace": true
+  "trimWhitespace": true
 }
