@@ -7,9 +7,9 @@ helper.test({
   options:
     {semicolons: true},
   input:
-    'var foo\n',
+    'var foo',
   expected:
-    'var foo;\n'
+    'var foo;'
 });
 
 helper.test({
