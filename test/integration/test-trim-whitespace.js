@@ -5,7 +5,7 @@ helper.test({
   description:
     'Remove trailing whitespace',
   options:
-    {whitespace: true},
+    {trimWhitespace: true},
   input:
     '    foo    ',
   expected:
@@ -14,9 +14,9 @@ helper.test({
 
 helper.test({
   description:
-    'Remove trailing whitespace in a comment',
+    'Remove trailing whitespace from inside a comment',
   options:
-    {whitespace: true},
+    {trimWhitespace: true},
   input:
     '    // foo    \n',
   expected:
@@ -25,9 +25,9 @@ helper.test({
 
 helper.test({
   description:
-    'Remove trailing whitespace in a multiline comment',
+    'Remove trailing whitespace from inside a multiline comment',
   options:
-    {whitespace: true},
+    {trimWhitespace: true},
   input:
     '  /*       \n' +
     '    foo    \n' +
