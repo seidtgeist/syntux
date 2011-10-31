@@ -1,4 +1,5 @@
 {
-  "quotes": "'",
-  "trimWhitespace": true
+  "semicolons": true,
+  "trimWhitespace": true,
+  "quotes": "'"
 }
