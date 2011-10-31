@@ -22,14 +22,14 @@ TBD
 ## DONE
 
 - Quotes
-- Trailing whitespace
+- Trim whitespace
+- Insert semicolons
 
 ## TODO
 
 Coding style elements which should be configurable & supported at some point:
 
 - Indentation
-- Semicolons
 - Braces
 - Newline at EOF
 - Var statements
