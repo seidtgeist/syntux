@@ -17,8 +17,8 @@
   },
   "dependencies": {
     "zeparser": "0.0.1",
-    "commander": "~0.3.0",
-    "underscore": "~1.2.1"
+    "commander": "0.3.1",
+    "underscore": "1.2.1"
   },
   "devDependencies": {
     "googlediff": "0.0.90",
