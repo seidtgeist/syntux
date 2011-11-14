@@ -24,6 +24,7 @@ TBD
 - Quotes
 - Trim whitespace
 - Insert semicolons
+- Newline at EOF
 
 ## TODO
 
@@ -31,7 +32,6 @@ Coding style elements which should be configurable & supported at some point:
 
 - Indentation
 - Braces
-- Newline at EOF
 - Var statements
 - Line length
 - Object & array literals
