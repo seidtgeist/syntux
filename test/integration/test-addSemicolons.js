@@ -5,7 +5,7 @@ helper.test({
   description:
     'Add missing semicolon',
   options:
-    {semicolons: true},
+    {addSemicolons: true},
   input:
     'var foo',
   expected:
@@ -16,7 +16,7 @@ helper.test({
   description:
     'Add multiple missing semicolons',
   options:
-    {semicolons: true},
+    {addSemicolons: true},
   input:
     'var foo = 1,\n'               +
     '    bar = 2,\n'               +
