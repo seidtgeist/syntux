@@ -20,6 +20,6 @@
   },
   "devDependencies": {
     "googlediff": "0.0.90",
-    "far": "0.0.7"
+    "urun": "0.0.3"
   }
 }
