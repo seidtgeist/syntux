@@ -16,10 +16,12 @@
     "node": "*"
   },
   "dependencies": {
-    "zeparser": "0.0.1"
+    "zeparser": "0.0.1",
+    "commander": "0.3.1",
+    "underscore": "1.2.1"
   },
   "devDependencies": {
     "googlediff": "0.0.90",
-    "far": "0.0.7"
+    "urun": "0.0.3"
   }
 }
