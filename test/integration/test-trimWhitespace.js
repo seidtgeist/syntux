@@ -48,16 +48,15 @@ helper.test({
   options:
     {trimWhitespace: true},
   input:
-    '  /*       \n' +
-    '    foo    \n' +
-    '           \n' +
-    '    bar    \n' +
-    '  */       \n' +
-    '    ',
-  expected:
-    '  /*\n' +
-    '    foo\n' +
+    '/*\n' +
+    'foo\n' +
     '\n' +
-    '    bar\n' +
-    '  */\n'
+    'bar\n' +
+    '*/',
+  expected:
+    '/*\n' +
+    'foo\n' +
+    '\n' +
+    'bar\n' +
+    '*/'
 });
