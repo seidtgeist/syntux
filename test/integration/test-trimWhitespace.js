@@ -41,3 +41,23 @@ helper.test({
     '  */\n'
 });
 
+
+helper.test({
+  description:
+    'Do not remove newlines from multiline comments',
+  options:
+    {trimWhitespace: true},
+  input:
+    '  /*       \n' +
+    '    foo    \n' +
+    '           \n' +
+    '    bar    \n' +
+    '  */       \n' +
+    '    ',
+  expected:
+    '  /*\n' +
+    '    foo\n' +
+    '\n' +
+    '    bar\n' +
+    '  */\n'
+});
