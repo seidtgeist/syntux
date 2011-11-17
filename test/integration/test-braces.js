@@ -45,14 +45,14 @@ helper.test({
     'function(){\nvar foo="bar";\n}\n'
 });
 
-//helper.test({
-//  description:
-//    'More complex brace test with spacing',
-//  options:
-//    {braces: "knr"},
-//  input:
-//    'var func = function()\n\n  {  /*what*/  switch(foo)  {  case "foo":if(){if(){}}}};',
-//  expected:
-//    'var func = function(){\n/*what*/  switch(foo){\ncase "foo":if(){\nif(){}}}};'
-//});
+helper.test({
+  description:
+    'More complex brace test with spacing',
+  options:
+    {braces: "knr"},
+  input:
+    'var func = function()\n\n  {  /*what*/  switch(foo)  {  case "foo":if(){if(){}}}};',
+  expected:
+    'var func = function(){\n/*what*/  switch(foo){\ncase "foo":if(){\nif(){}\n}\n\n}\n\n}\n;'
+});
 
