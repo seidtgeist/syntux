@@ -47,7 +47,7 @@ helper.test({
 
 //helper.test({
 //  description:
-//    'Modify braces according c style',
+//    'More complex brace test with spacing',
 //  options:
 //    {braces: "knr"},
 //  input:
