@@ -47,6 +47,17 @@ helper.test({
 
 helper.test({
   description:
+    'Simple object',
+  options:
+    {braces: 'knr'},
+  input:
+    'a={foo:bar, bar:baz}',
+  expected:
+    'a={\nfoo:bar, bar:baz\n}\n'
+});
+
+helper.test({
+  description:
     'More complex brace test with spacing',
   options:
     {braces: "knr"},
