@@ -5,7 +5,7 @@ helper.test({
   description:
     'Simple brace test. No wrapping.',
   options:
-    {braces: 'knr'},
+    {braces: '{\n'},
   input:
     'function(){}',
   expected:
@@ -16,7 +16,7 @@ helper.test({
   description:
     'Simple brace test. Wrapping.',
   options:
-    {braces: 'knr'},
+    {braces: '{\n'},
   input:
     'function(){var foo="bar";}',
   expected:
@@ -28,7 +28,7 @@ helper.test({
   description:
     'Brace test with indentation.',
   options:
-    {braces: 'knr'},
+    {braces: '{\n'},
   input:
     '  \tfunction(){var foo="bar";}',
   expected:
@@ -41,7 +41,7 @@ helper.test({
   description:
     'Brace test with spacing.',
   options:
-    {braces: 'knr'},
+    {braces: '{\n'},
   input:
     'function()\t\n' +
     ' {\n' +
@@ -56,7 +56,7 @@ helper.test({
   description:
     'Simple object',
   options:
-    {braces: 'knr'},
+    {braces: '{\n'},
   input:
     'a={foo:bar, bar:baz}',
   expected:
@@ -68,7 +68,7 @@ helper.test({
   description:
     'More complex brace test with spacing',
   options:
-    {braces: "knr"},
+    {braces: "{\n"},
   input:
     'var func = function()\n' +
     '\n'+

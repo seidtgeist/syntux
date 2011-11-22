@@ -3,5 +3,5 @@
   "trimWhitespace": true,
   "quotes": "'",
   "eof": "\n",
-  "braces": "knr"
+  "braces": "{\n"
 }
