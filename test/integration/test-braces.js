@@ -21,7 +21,19 @@ helper.test({
     'function(){var foo="bar";}',
   expected:
     'function(){\nvar foo="bar";\n' +
-    '}\n'
+    '}'
+});
+
+helper.test({
+  description:
+    'Simple object',
+  options:
+    {braces: '{\n'},
+  input:
+    'a={foo:bar, bar:baz}',
+  expected:
+    'a={\nfoo:bar, bar:baz\n' +
+    '}'
 });
 
 helper.test({
@@ -34,7 +46,7 @@ helper.test({
   expected:
     '  \tfunction(){\n' +
     '  \tvar foo="bar";\n' +
-    '  \t}\n'
+    '  \t}'
 });
 
 helper.test({
@@ -49,26 +61,14 @@ helper.test({
   expected:
     'function(){\n'+
     'var foo="bar";\n' +
-    '}\n'
-});
-
-helper.test({
-  description:
-    'Simple object',
-  options:
-    {braces: '{\n'},
-  input:
-    'a={foo:bar, bar:baz}',
-  expected:
-    'a={\nfoo:bar, bar:baz\n' +
-    '}\n'
+    '}'
 });
 
 helper.test({
   description:
     'More complex brace test with spacing',
   options:
-    {braces: "{\n"},
+    {braces: '{\n'},
   input:
     'var func = function()\n' +
     '\n'+
@@ -79,10 +79,6 @@ helper.test({
     'case "foo":if(){\n' +
     'if(){}\n'+
     '}\n'+
-    '\n'+
     '}\n'+
-    '\n'+
-    '}\n'+
-    ';'
+    '};'
 });
-
