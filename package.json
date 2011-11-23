@@ -16,7 +16,7 @@
     "node": "*"
   },
   "dependencies": {
-    "zeparser": "0.0.2",
+    "zeparser": "0.0.3",
     "commander": "0.3.3",
     "underscore": "1.2.2"
   },
