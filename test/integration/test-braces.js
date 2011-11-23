@@ -76,21 +76,37 @@ helper.test({
     '};'
 });
 
-helper.test( {
-    description:
-      'Try/catch test',
-    options: {
-  braces: '{\n'
-    },
+helper.test({
+  description:
+    'Try/catch test',
+  options: { braces: '{\n' },
   input:
     'try {\n' +
     '    var foo = bar;\n' +
     '} catch (err) {\n' +
     '}',
   expected:
-  'try{\n' +
-  '    var foo = bar;\n' +
-  '} catch (err){\n' +
-  '\n' +
-  '}',
+    'try{\n' +
+    '    var foo = bar;\n' +
+    '} catch (err){\n' +
+    '\n' +
+    '}'
+});
+
+helper.test(true, {
+  description:
+    'if/else indentation test',
+  options: { braces: '{\n' },
+  input:
+    '  if (foo){\n' +
+    '    bar=baz;\n' +
+    '  } else{\n' + 
+    '    baz=bar;\n' +
+    '  }',
+  expected:
+    '  if (foo){\n' +
+    '    bar=baz;\n' +
+    '  } else{\n' + 
+    '    baz=bar;\n' +
+    '  }',
 });
