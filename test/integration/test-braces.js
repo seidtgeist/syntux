@@ -32,8 +32,7 @@ helper.test({
   input:
     'a={foo:bar, bar:baz}',
   expected:
-    'a={\nfoo:bar, bar:baz\n' +
-    '}'
+    'a={foo:bar, bar:baz}'
 });
 
 helper.test({
