@@ -93,7 +93,7 @@ helper.test({
     '}'
 });
 
-helper.test(true, {
+helper.test({
   description:
     'if/else indentation test',
   options: { braces: '{\n' },
