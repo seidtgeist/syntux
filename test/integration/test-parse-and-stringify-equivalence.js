@@ -14,10 +14,13 @@ fixtures.forEach(function(fileName) {
   var path              = common.dir.fixture + '/' + fileName;
   var source            = fs.readFileSync(path, 'utf8');
 
-  var reassembledSource = Syntux.transform(source);
+  var start = Date.now();
+  var tokens = Syntux.parse(source);
+  var reassembledSource = tokens.toString();
+  var duration = Date.now() - start;
 
   if (reassembledSource === source) {
-    console.log('Pass: %s', fileName);
+    console.log('Pass: %s (%d ms)', fileName, duration);
     return;
   }
 
