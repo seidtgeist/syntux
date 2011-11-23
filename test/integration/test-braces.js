@@ -82,3 +82,22 @@ helper.test({
     '}\n'+
     '};'
 });
+
+helper.test( {
+    description:
+      'Try/catch test',
+    options: {
+  braces: '{\n'
+    },
+  input:
+    'try {\n' +
+    '    var foo = bar;\n' +
+    '} catch (err) {\n' +
+    '}',
+  expected:
+  'try{\n' +
+  '    var foo = bar;\n' +
+  '} catch (err){\n' +
+  '\n' +
+  '}',
+});
