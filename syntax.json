@@ -2,5 +2,6 @@
   "addSemicolons": true,
   "trimWhitespace": true,
   "quotes": "'",
-  "eof": "\n"
+  "eof": "\n",
+  "braces": " {\n"
 }
