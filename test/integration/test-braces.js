@@ -60,7 +60,7 @@ helper.test({
     '}'
 });
 
-helper.test(true, {
+helper.test({
   description:
     'More complex brace test with spacing',
   options:
