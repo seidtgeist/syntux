@@ -20,8 +20,7 @@ helper.test({
   input:
     'function(){var foo="bar";}',
   expected:
-    'function(){\nvar foo="bar";\n' +
-    '}'
+    'function(){var foo="bar";}'
 });
 
 helper.test({
@@ -43,9 +42,7 @@ helper.test({
   input:
     '  \tfunction(){var foo="bar";}',
   expected:
-    '  \tfunction(){\n' +
-    'var foo="bar";\n' +
-    '  \t}'
+    '  \tfunction(){var foo="bar";}'
 });
 
 helper.test({
@@ -63,7 +60,7 @@ helper.test({
     '}'
 });
 
-helper.test({
+helper.test(true, {
   description:
     'More complex brace test with spacing',
   options:
@@ -71,14 +68,11 @@ helper.test({
   input:
     'var func = function()\n' +
     '\n'+
-    '  {  /*what*/  switch(foo)  {  case "foo":if(){if(){}}}};',
+    '  {  /*what*/  switch(foo)  {  case "foo":if(){if(){}}}' +
+    '\n};',
   expected:
     'var func = function(){\n' +
-    '  /*what*/  switch(foo){\n' + 
-    '  case "foo":if(){\n' +
-    'if(){}\n'+
-    '}\n'+
-    '}\n'+
+    '  /*what*/  switch(foo)  {  case "foo":if(){if(){}}}\n'+
     '};'
 });
 
