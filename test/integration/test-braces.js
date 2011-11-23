@@ -18,20 +18,61 @@ helper.test({
   options:
     {braces: '{\n'},
   input:
-    'function(){var foo="bar";}',
+    'function(){\n' +
+    '  var foo="bar";\n' +
+    '}',
   expected:
-    'function(){var foo="bar";}'
+    'function(){\n' +
+    '  var foo="bar";\n' +
+    '}'
 });
 
 helper.test({
   description:
-    'Simple object',
+    'Simple brace test. Same line with space.',
+  options:
+    {braces: ' {\n'},
+  input:
+    '  function(){\n' +
+    '    var foo="bar";\n' +
+    '  }',
+  expected:
+    '  function() {\n' +
+    '    var foo="bar";\n' +
+    '  }'
+});
+
+helper.test({
+  description:
+    'Simple brace test. Next line.',
+  options:
+    {braces: '\n{'},
+  input:
+    '  function(){\n' +
+    '    var foo="bar";\n' +
+    '  }',
+  expected:
+    '  function()\n' +
+    '  {\n' + 
+    '    var foo="bar";\n' +
+    '  }'
+});
+
+helper.test({
+  description:
+    'Simple object (no manipulation)',
   options:
     {braces: '{\n'},
   input:
-    'a={foo:bar, bar:baz}',
+    'a={\n' +
+    '  foo:bar,\n' +
+    '  bar:baz\n' +
+    '};',
   expected:
-    'a={foo:bar, bar:baz}'
+    'a={\n' +
+    '  foo:bar,\n' +
+    '  bar:baz\n' +
+    '};'
 });
 
 helper.test({
@@ -43,6 +84,23 @@ helper.test({
     '  \tfunction(){var foo="bar";}',
   expected:
     '  \tfunction(){var foo="bar";}'
+});
+
+helper.test({
+  description:
+    'Brace test with indentation, statement on two lines.',
+  options:
+    {braces: '{\n'},
+  input:
+    '  if(a == b &&\n' +
+    '      b == c){\n' +
+    '    var foo="bar";\n' +
+    '  }',
+  expected:
+    '  if(a == b &&\n' +
+    '      b == c){\n' +
+    '    var foo="bar";\n' +
+    '  }',
 });
 
 helper.test({
