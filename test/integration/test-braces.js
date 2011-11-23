@@ -45,7 +45,7 @@ helper.test({
     '  \tfunction(){var foo="bar";}',
   expected:
     '  \tfunction(){\n' +
-    '  \tvar foo="bar";\n' +
+    'var foo="bar";\n' +
     '  \t}'
 });
 
@@ -60,7 +60,7 @@ helper.test({
     '\t var foo="bar";}',
   expected:
     'function(){\n'+
-    'var foo="bar";\n' +
+    '\t var foo="bar";\n' +
     '}'
 });
 
@@ -75,8 +75,8 @@ helper.test({
     '  {  /*what*/  switch(foo)  {  case "foo":if(){if(){}}}};',
   expected:
     'var func = function(){\n' +
-    '/*what*/  switch(foo){\n' + 
-    'case "foo":if(){\n' +
+    '  /*what*/  switch(foo){\n' + 
+    '  case "foo":if(){\n' +
     'if(){}\n'+
     '}\n'+
     '}\n'+
