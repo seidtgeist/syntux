@@ -90,3 +90,20 @@ helper.test({
     '\n' +
     'var foo = "bar";\n',
 });
+
+helper.test({
+  description:
+    'Non-assignment lines break alignment groups',
+  options:
+    {align: ['=']},
+  input:
+    'var a = 1;\n' +
+    'var muchlonger = 2;\n' +
+    'console.log(a)\n;' +
+    'var foo = "bar";\n',
+  expected:
+    'var a          = 1;\n' +
+    'var muchlonger = 2;\n' +
+    'console.log(a)\n;' +
+    'var foo = "bar";\n',
+});
