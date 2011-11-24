@@ -108,5 +108,24 @@ helper.test({
     'var foo = "bar";\n',
 });
 
-// @todo break for assignments that go multiple lines
+helper.test({
+  description:
+    'Multi-line assignments break grouping',
+  options:
+    {align: ['=']},
+  input:
+    'var a = 1;\n' +
+    'var muchlonger = 2;\n' +
+    'var c = {\n' +
+    '  foo: "bar",\n' +
+    '}\n',
+  expected:
+    'var a          = 1;\n' +
+    'var muchlonger = 2;\n' +
+    'var c = {\n' +
+    '  foo: "bar",\n' +
+    '}\n',
+});
+
+
 // @todo break on for (var key in, for (var = 0;
