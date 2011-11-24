@@ -107,3 +107,6 @@ helper.test({
     'console.log(a)\n;' +
     'var foo = "bar";\n',
 });
+
+// @todo break for assignments that go multiple lines
+// @todo break on for (var key in, for (var = 0;
