@@ -16,6 +16,25 @@ helper.test({
 
 helper.test({
   description:
+    'Simple alignment of two var statement groups',
+  options:
+    {align: ['=']},
+  input:
+    'var a = 1;\n' +
+    'var muchlonger = 2;\n' +
+    '\n' +
+    'var alsolong = 3;\n' +
+    'var b = 4;\n',
+  expected:
+    'var a          = 1;\n' +
+    'var muchlonger = 2;\n' +
+    '\n' +
+    'var alsolong = 3;\n' +
+    'var b        = 4;\n',
+});
+
+helper.test({
+  description:
     'Do not break already aligned var statements',
   options:
     {align: ['=']},
