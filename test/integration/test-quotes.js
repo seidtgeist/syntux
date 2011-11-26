@@ -1,18 +1,35 @@
-var common = require('../common');
-var Syntux = common.Syntux;
-var assert = require('assert');
+var TransformHelper = require('../common').helper('transform_helper');
+var helper = TransformHelper.create();
 
-(function testDoubleQuotesToSingleQuotes() {
-  var source = Syntux.transform('foo("bar")', {quotes: '\''});
-  assert.equal(source, 'foo(\'bar\')');
-})();
+helper.test({
+  description:
+    'Double quotes to single quotes',
+  options:
+    {quotes: '\''},
+  input:
+    'foo("bar")',
+  expected:
+    'foo(\'bar\')'
+});
 
-(function testEscapedQuote() {
-  var source = Syntux.transform('foo("b\\"ar")', {quotes: '\''});
-  assert.equal(source, 'foo(\'b"ar\')');
-})();
+helper.test({
+  description:
+    'Escaped Quote',
+  options:
+    {quotes: '\''},
+  input:
+    'foo("b\\"ar")',
+  expected:
+    'foo(\'b"ar\')'
+});
 
-(function testUnescapedQuote() {
-  var source = Syntux.transform('foo("b\'ar")', {quotes: '\''});
-  assert.equal(source, 'foo(\'b\\\'ar\')');
-})();
+helper.test({
+  description:
+    'Unescaped Quote',
+  options:
+    {quotes: '\''},
+  input:
+    'foo("b\'ar")',
+  expected:
+    'foo(\'b\\\'ar\')'
+});
