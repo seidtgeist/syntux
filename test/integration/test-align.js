@@ -146,5 +146,32 @@ helper.test({
     '}\n',
 });
 
+//helper.test({
+  //description:
+    //'for (var i = 0; i < N; i++) breaks grouping',
+  //options:
+    //{align: ['=']},
+  //input:
+    //'var a = 1;\n' +
+    //'for (var i = 0; i < 5; i++) {}\n',
+  //expected:
+    //'var a = 1;\n' +
+    //'for (var i = 0; i < 5; i++) {}\n',
+//});
+
+//helper.test({
+  //description:
+    //'while(foo = bar) breaks grouping',
+  //options:
+    //{align: ['=']},
+  //input:
+    //'var a = 1;\n' +
+    //'while (foo = bar) {}\n',
+  //expected:
+    //'var a = 1;\n' +
+    //'while (foo = bar) {}\n',
+//});
 
 // @todo break on for (var key in, for (var = 0;
+// @todo multiple assignments on eone line (var a = b = 2;)
+// @todo assignment if part of regex
