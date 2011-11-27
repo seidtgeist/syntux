@@ -29,6 +29,21 @@ helper.test({
 
 helper.test({
   description:
+    'Simple brace test with \\r\\n as new line.',
+  options:
+    {braces: '{\r\n'},
+  input:
+    'function(){\n' +
+    '  var foo="bar";\n' +
+    '}',
+  expected:
+    'function(){\r\n' +
+    '  var foo="bar";\r\n' +
+    '}'
+});
+
+helper.test({
+  description:
     'Simple brace test. Same line with space.',
   options:
     {braces: ' {\n'},
