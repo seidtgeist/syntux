@@ -183,3 +183,17 @@ helper.test({
     '    baz=bar;\n' +
     '  }',
 });
+
+helper.test(true, {
+  description:
+    'Braces and comments. Do not remove them.',
+  options: { braces: '{\n' },
+  input:
+    '  if (foo) {\n' +
+    '    bar = baz; \/\/ foo?\n' +
+    '  }',
+  expected:
+    '  if (foo){\n' +
+    '    bar = baz; \/\/ foo?\n' +
+    '  }',
+});
