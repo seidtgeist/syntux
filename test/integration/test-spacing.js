@@ -251,7 +251,7 @@ helper.test({
   input:
     'if(!foo && !bar){}',
   expected:
-    'if(! foo && ! bar){}',
+    'if(! foo && ! bar){}'
 });
 
 helper.test({
@@ -262,7 +262,7 @@ helper.test({
   input:
     'if(!foo && !bar){}',
   expected:
-    'if(! foo && ! bar){}',
+    'if(! foo && ! bar){}'
 });
 
 helper.test({
@@ -273,5 +273,181 @@ helper.test({
   input:
     'if(!!foo){}',
   expected:
-    'if(!! foo){}',
+    'if(!! foo){}'
+});
+
+helper.test({
+  description:
+    'Test assignment-op no spacing (around)',
+  options:
+    {spacing: {around: {assignmentOp: false}}},
+  input:
+    'foo >>= bar;',
+  expected:
+    'foo>>=bar;'
+});
+
+helper.test({
+  description:
+    'Test assignment-op spacing (around)',
+  options:
+    {spacing: {around: {assignmentOp: true}}},
+  input:
+    'foo>>=bar;',
+  expected:
+    'foo >>= bar;'
+});
+
+helper.test({
+  description:
+    'Test logical-op no spacing (around)',
+  options:
+    {spacing: {around: {logicalOp: false}}},
+  input:
+    'var a = foo && bar;',
+  expected:
+    'var a = foo&&bar;'
+});
+
+helper.test({
+  description:
+    'Test logical-op spacing (around)',
+  options:
+    {spacing: {around: {logicalOp: true}}},
+  input:
+    'var a = foo||bar;',
+  expected:
+    'var a = foo || bar;'
+});
+
+helper.test({
+  description:
+    'Test relational-op no spacing (around)',
+  options:
+    {spacing: {around: {relationalOp: false}}},
+  input:
+    'var a = foo >= bar;',
+  expected:
+    'var a = foo>=bar;'
+});
+
+helper.test({
+  description:
+    'Test relational-op spacing (around)',
+  options:
+    {spacing: {around: {relationalOp: true}}},
+  input:
+    'var a = foo>bar;',
+  expected:
+    'var a = foo > bar;'
+});
+
+helper.test({
+  description:
+    'Test equal-op no spacing (around)',
+  options:
+    {spacing: {around: {equalOp: false}}},
+  input:
+    'var a = foo === bar;',
+  expected:
+    'var a = foo===bar;'
+});
+
+helper.test({
+  description:
+    'Test equal-op spacing (around)',
+  options:
+    {spacing: {around: {equalOp: true}}},
+  input:
+    'var a = foo!=bar;',
+  expected:
+    'var a = foo != bar;'
+});
+
+helper.test({
+  description:
+    'Test bitwise-op no spacing (around)',
+  options:
+    {spacing: {around: {bitwiseOp: false}}},
+  input:
+    'var a = foo & bar;',
+  expected:
+    'var a = foo&bar;'
+});
+
+helper.test({
+  description:
+    'Test bitwise-op spacing (around)',
+  options:
+    {spacing: {around: {bitwiseOp: true}}},
+  input:
+    'var a = foo^bar;',
+  expected:
+    'var a = foo ^ bar;'
+});
+
+helper.test({
+  description:
+    'Test cond-op no spacing (around)',
+  options:
+    {spacing: {around: {condOp: false}}},
+  input:
+    'var a = foo ? bar : baz;',
+  expected:
+    'var a = foo?bar:baz;'
+});
+
+helper.test({
+  description:
+    'Test bitwise-op spacing (around)',
+  options:
+    {spacing: {around: {condOp: true}}},
+  input:
+    'var a = foo?bar:baz;',
+  expected:
+    'var a = foo ? bar : baz;'
+});
+
+helper.test({
+  description:
+    'Test math-op no spacing (around)',
+  options:
+    {spacing: {around: {mathOp: false}}},
+  input:
+    'var a = foo + bar;',
+  expected:
+    'var a = foo+bar;'
+});
+
+helper.test({
+  description:
+    'Test math-op spacing (around)',
+  options:
+    {spacing: {around: {mathOp: true}}},
+  input:
+    'var a = foo%bar;',
+  expected:
+    'var a = foo % bar;'
+});
+
+helper.test({
+  description:
+    'Test shift-op no spacing (around)',
+  options:
+    {spacing: {around: {shiftOp: false}}},
+  input:
+    'var a = foo << bar;',
+  expected:
+    'var a = foo<<bar;'
+});
+
+helper.test({
+  description:
+    'Test shift-op spacing (around)',
+  options:
+    {spacing: {around: {shiftOp: true}}},
+  input:
+    'var a = foo>>>bar;',
+  expected:
+    'var a = foo >>> bar;'
 });
