@@ -451,3 +451,84 @@ helper.test({
   expected:
     'var a = foo >>> bar;'
 });
+
+helper.test({
+  description:
+    'Test braces no spacing (around)',
+  options:
+    {spacing: {around: {braces: false}}},
+  input:
+    'var a = { foo:bar };',
+  expected:
+    'var a = {foo:bar};'
+});
+
+helper.test({
+  description:
+    'Test braces spacing (around)',
+  options:
+    {spacing: {around: {braces: true}}},
+  input:
+    'var a = {foo:bar};',
+  expected:
+    'var a = { foo:bar };'
+});
+
+helper.test({
+  description:
+    'Test braces spacing (around). No manipulation',
+  options:
+    {spacing: {around: {braces: true}}},
+  input:
+    'var a = { \n' +
+    '  foo:bar\n' +
+    '};',
+  expected:
+    'var a = { \n' +
+    '  foo:bar\n' +
+    '};'
+});
+
+helper.test({
+  description:
+    'Test brackets no spacing (around)',
+  options:
+    {spacing: {around: {brackets: false}}},
+  input:
+    'var a = [ foo, bar, baz ];',
+  expected:
+    'var a = [foo, bar, baz];'
+});
+
+helper.test({
+  description:
+    'Test brackets spacing (around)',
+  options:
+    {spacing: {around: {brackets: true}}},
+  input:
+    'var a = [foo, bar, baz];',
+  expected:
+    'var a = [ foo, bar, baz ];'
+});
+
+helper.test({
+  description:
+    'Test parentheses no spacing (around)',
+  options:
+    {spacing: {around: {parentheses: false}}},
+  input:
+    'var a = ( foo || bar && baz );',
+  expected:
+    'var a = (foo || bar && baz);'
+});
+
+helper.test({
+  description:
+    'Test parentheses spacing (around)',
+  options:
+    {spacing: {around: {parentheses: true}}},
+  input:
+    'var a = foo(bar,baz);',
+  expected:
+    'var a = foo( bar,baz );'
+});
