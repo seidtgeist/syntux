@@ -399,13 +399,58 @@ helper.test({
 
 helper.test({
   description:
-    'Test bitwise-op spacing (around)',
+    'Test cond-op spacing (around)',
   options:
     {spacing: {around: {condOp: true}}},
   input:
     'var a = foo?bar:baz;',
   expected:
     'var a = foo ? bar : baz;'
+});
+
+helper.test({
+  description:
+    'Test cond-op spacing (around). No changes in object literal.',
+  options:
+    {spacing: {around: {condOp: true}}},
+  input:
+    'var a = {\n' +
+    '  foo:bar,\n' +
+    '  bar:baz\n' +
+    '};',
+  expected:
+    'var a = {\n' +
+    '  foo:bar,\n' +
+    '  bar:baz\n' +
+    '};'
+});
+
+helper.test({
+  description:
+    'Test cond-op spacing (around). On new lines.',
+  options:
+    {spacing: {around: {condOp: true}}},
+  input:
+    'var a = foo ?\n' +
+    '  bar:baz;',
+  expected:
+    'var a = foo ?\n' +
+    '  bar : baz;'
+});
+
+helper.test({
+  description:
+    'Test cond-op spacing (around). ":" on own line.',
+  options:
+    {spacing: {around: {condOp: true}}},
+  input:
+    'var a = foo ?\n' +
+    '  bar:\n' +
+    '  baz;',
+  expected:
+    'var a = foo ?\n' +
+    '  bar:\n' +
+    '  baz;',
 });
 
 helper.test({
