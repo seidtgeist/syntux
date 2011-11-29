@@ -477,6 +477,19 @@ helper.test({
 
 helper.test({
   description:
+    'Test math-op spacing (around). Do not touch new line',
+  options:
+    {spacing: {around: {mathOp: true}}},
+  input:
+    'var a = foo + bar +\n' +
+    '  baz;',
+  expected:
+    'var a = foo + bar +\n' +
+    '  baz;'
+});
+
+helper.test({
+  description:
     'Test shift-op no spacing (around)',
   options:
     {spacing: {around: {shiftOp: false}}},
@@ -576,4 +589,15 @@ helper.test({
     'var a = foo(bar,baz);',
   expected:
     'var a = foo( bar,baz );'
+});
+
+helper.test({
+  description:
+    'Unary operator test',
+  options:
+    {spacing: {around: {mathOp: true}}},
+  input:
+    'var a = -1+1;',
+  expected:
+    'var a = -1 + 1;'
 });
