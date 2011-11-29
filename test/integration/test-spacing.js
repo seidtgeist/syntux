@@ -126,6 +126,21 @@ helper.test({
 
 helper.test({
   description:
+    'Test braces spacing (before). No spacing because on own line.',
+  options:
+    {spacing: {before: {braces: true}}},
+  input:
+    '  function foo()\n' +
+    '  {\n' +
+    '  }',
+  expected:
+    '  function foo()\n' +
+    '  {\n' +
+    '  }'
+});
+
+helper.test({
+  description:
     'Test case colon spacing (before)',
   options:
     {spacing: {before: {caseColon: true}}},
