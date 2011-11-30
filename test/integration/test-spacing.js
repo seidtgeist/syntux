@@ -616,3 +616,47 @@ helper.test({
   expected:
     'var a = -1 + 1;'
 });
+
+helper.test({
+  description:
+    'Comment test with after (do not strip it)',
+  options:
+    {spacing: {after: {comma: false}}},
+  input:
+    'var a = function(foo, /*comment*/ bar);',
+  expected:
+    'var a = function(foo,/*comment*/bar);'
+});
+
+helper.test({
+  description:
+    'Comment test with before (do not strip it)',
+  options:
+    {spacing: {before: {braces: true}}},
+  input:
+    'var a = function(bar, baz)   /*comment*/  {};',
+  expected:
+    'var a = function(bar, baz) /*comment*/ {};'
+});
+
+helper.test(true, {
+  description:
+    'Comment test with around (do not strip it)',
+  options:
+    {spacing: {around: {mathOp: false}}},
+  input:
+    'var a = bar /*comment*/ + /* comment */ baz;',
+  expected:
+    'var a = bar/*comment*/+/* comment */baz;'
+});
+
+helper.test(true, {
+  description:
+    'Comment test with around and parentheses (do not strip it)',
+  options:
+    {spacing: {around: {parentheses: false}}},
+  input:
+    'var a = (/*comment*/ foo || bar && baz /*comment*/);',
+  expected:
+    'var a = (/*comment*/foo || bar && baz/*comment*/);'
+});
