@@ -639,7 +639,7 @@ helper.test({
     'var a = function(bar, baz) /*comment*/ {};'
 });
 
-helper.test(true, {
+helper.test({
   description:
     'Comment test with around (do not strip it)',
   options:
@@ -650,7 +650,7 @@ helper.test(true, {
     'var a = bar/*comment*/+/* comment */baz;'
 });
 
-helper.test(true, {
+helper.test({
   description:
     'Comment test with around and parentheses (do not strip it)',
   options:
@@ -661,7 +661,7 @@ helper.test(true, {
     'var a = (/*comment*/foo || bar && baz/*comment*/);'
 });
 
-helper.test(true, {
+helper.test({
   description:
     'Do not touch direct neighbors for parantheses spacing',
   options:
