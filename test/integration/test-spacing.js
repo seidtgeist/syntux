@@ -660,3 +660,14 @@ helper.test(true, {
   expected:
     'var a = (/*comment*/foo || bar && baz/*comment*/);'
 });
+
+helper.test(true, {
+  description:
+    'Do not touch direct neighbors for parantheses spacing',
+  options:
+    {spacing: {around: {parantheses: true}}},
+  input:
+    'var a = foo();',
+  expected:
+    'var a = foo();'
+});
