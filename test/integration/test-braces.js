@@ -144,8 +144,8 @@ helper.test({
     '  {  /*what*/  switch(foo)  {  case "foo":if(){if(){}}}' +
     '\n};',
   expected:
-    'var func = function(){\n' +
-    '  /*what*/  switch(foo)  {  case "foo":if(){if(){}}}\n'+
+    'var func = function(){ /*what*/\n' +
+    'switch(foo)  {  case "foo":if(){if(){}}}\n'+
     '};'
 });
 
@@ -184,7 +184,7 @@ helper.test({
     '  }',
 });
 
-helper.test(true, {
+helper.test({
   description:
     'Braces and comments. Do not remove them.',
   options: { braces: '{\n' },
@@ -195,5 +195,34 @@ helper.test(true, {
   expected:
     '  if (foo){\n' +
     '    bar = baz; \/\/ foo?\n' +
+    '  }',
+});
+
+helper.test({
+  description:
+    'Braces and comments (same line). Do not break them.',
+  options: { braces: '{\n' },
+  input:
+    '  if (foo) { /*comment*/\n' +
+    '    bar = baz;\n' +
+    '  }',
+  expected:
+    '  if (foo){ /*comment*/\n' +
+    '    bar = baz;\n' +
+    '  }',
+});
+
+helper.test({
+  description:
+    'Braces and comments (next line). Do not break them.',
+  options: { braces: '\n{' },
+  input:
+    '  if (foo) { // comment\n' +
+    '    bar = baz;\n' +
+    '  }',
+  expected:
+    '  if (foo)\n' +
+    '  { // comment\n' +
+    '    bar = baz;\n' +
     '  }',
 });
