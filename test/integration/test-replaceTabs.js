@@ -5,7 +5,7 @@ helper.test({
   description:
     'Fix wrong indentation',
   options:
-    {indent: '  '},
+    {replaceTabs: '  '},
   input:
     'function foo() {\n' +
     '\treturn;\n'        +
@@ -20,7 +20,7 @@ helper.test({
   description:
     'Do not break custom indentation',
   options:
-    {indent: '  '},
+    {replaceTabs: '  '},
   input:
     '\tvar foo = 1,\n' +
     '\t    bar = 2;',
